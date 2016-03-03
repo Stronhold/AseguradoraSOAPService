@@ -16,7 +16,7 @@ namespace Aseguradora
         public bool AddPolicy(int id, string name, string desc)
         {
             Policy policy = new Policy(name, desc, id);
-            var pol = aPolicy.Select(p => p.ID == policy.ID);
+            var pol = aPolicy.Select(p => p.ID == id).Where(r => r == true);
             if (pol != null && pol.Count() == 0)
             {
                 List<Policy> listPolicy = aPolicy.ToList();
@@ -33,7 +33,7 @@ namespace Aseguradora
             {
                 aPolicy = RandomDataGenerator.CreateRandomPolicies();
             }
-            return aPolicy;
+            return aPolicy.OrderBy(p => p.ID).ToArray();
         }
 
         public Policy GetData(int id)

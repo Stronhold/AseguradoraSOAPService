@@ -27,13 +27,13 @@ namespace Aseguradora
         Policy[] GetAllPolicies();
 
         [OperationContract]
-        bool AddPolicy(int id, string name, string desc);
+        bool AddPolicy(int id, string name, string desc, string type);
 
         [OperationContract]
         bool RemovePolicy(int id);
 
         [OperationContract]
-        bool UpdatePolicy(int id, string name, string desc);
+        bool UpdatePolicy(int id, string name, string desc,string type);
     }
 
     // Utilice un contrato de datos, como se ilustra en el ejemplo siguiente, para agregar tipos compuestos a las operaciones de servicio.
@@ -44,6 +44,7 @@ namespace Aseguradora
         string name= "";
         string description = "";
         int id = 0;
+        string type = "";
 
         [DataMember]
         public string Name
@@ -60,6 +61,13 @@ namespace Aseguradora
         }
 
         [DataMember]
+        public string Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
+
+        [DataMember]
         public int ID
         {
             get { return id; }
@@ -71,11 +79,12 @@ namespace Aseguradora
 
         }
         
-        public Policy(string n, string d, int i)
+        public Policy(string n, string d, int i, string type)
         {
             Name = n;
             Description = d;
             ID = i;
+            Type = type;
         }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="Services\Interfaces\IServicePolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Classes\ServicePolicy.cs" />
+    <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\RandomDataGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

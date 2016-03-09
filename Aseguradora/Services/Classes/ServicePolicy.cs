@@ -13,9 +13,9 @@ namespace Aseguradora
     {
         private static Policy [] aPolicy = new Policy[0];
 
-        public bool AddPolicy(int id, string name, string desc)
+        public bool AddPolicy(int id, string name, string desc, string type)
         {
-            Policy policy = new Policy(name, desc, id);
+            Policy policy = new Policy(name, desc, id, type);
             var pol = aPolicy.Select(p => p.ID == id).Where(r => r == true);
             if (pol != null && pol.Count() == 0)
             {
@@ -71,9 +71,9 @@ namespace Aseguradora
             return false;
         }
 
-        public bool UpdatePolicy(int id, string name, string desc)
+        public bool UpdatePolicy(int id, string name, string desc, string type)
         {
-            Policy updated = new Policy(name, desc, id);
+            Policy updated = new Policy(name, desc, id, type);
             var exists = aPolicy.Select(p => updated.ID == p.ID);
             if(exists != null ||exists.Count() > 0)
             {

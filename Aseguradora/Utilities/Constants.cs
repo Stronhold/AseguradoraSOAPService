@@ -8,6 +8,6 @@ namespace Aseguradora.Utilities
 {
     class Constants
     {
-        public const string PATH = "types.xml";
+        public const string PATH = "Assets/types.xml";
     }
 }

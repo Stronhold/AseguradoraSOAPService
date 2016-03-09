@@ -19,24 +19,22 @@ namespace Aseguradora.Utilities
             {
                 aPolicies[i] = new Policy(RandomString(5), RandomString(20), i, randomType());
             }
-            GenerateXML();
             return aPolicies;
         }
 
-        private static void GenerateXML()
+        private static string [] ReadXML()
         {
-            DataSet ds = new DataSet("myDataSet");
-            string[] type = new string [4] {"hogar", "coche", "laboral", "salud" };
-            XmlSerializer ser = new XmlSerializer(typeof(string []));
-            FileStream file = File.Create("types.xml");
-            ser.Serialize(file, type);
-            file.Close();
+            XmlSerializer ser = new XmlSerializer(typeof(string[]));
+            StreamReader reader = new StreamReader(Constants.PATH);
+            string[] types = (string[])ser.Deserialize(reader);
+            return types;
         }
 
         private static string randomType()
         {
-            
-            return "";
+            var types = ReadXML();
+            Random rnd = new Random();
+            return types[rnd.Next(0,types.Length)];
         }
 
         public static string RandomString(int length)

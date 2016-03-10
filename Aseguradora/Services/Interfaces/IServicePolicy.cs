@@ -27,6 +27,9 @@ namespace Aseguradora
         Policy[] GetAllPolicies();
 
         [OperationContract]
+        int[] GetAllID();
+
+        [OperationContract]
         bool AddPolicy(int id, string name, string desc, string type);
 
         [OperationContract]

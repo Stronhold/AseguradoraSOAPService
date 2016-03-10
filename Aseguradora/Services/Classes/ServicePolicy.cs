@@ -27,6 +27,16 @@ namespace Aseguradora
             return false;
         }
 
+        public int[] GetAllID()
+        {
+            int[] ids = new int[aPolicy.Length];
+            for(int i = 0; i < aPolicy.Length; i++)
+            {
+                ids[i] = aPolicy[i].ID;
+            }
+            return ids;
+        }
+
         public Policy[] GetAllPolicies()
         {
             if(aPolicy.Length <= 0)
@@ -38,18 +48,8 @@ namespace Aseguradora
 
         public Policy GetData(int id)
         {
-            if(aPolicy == null)
-            {
-                return null;
-            }
-            else if (aPolicy.Count() < id)
-            {
-                return null;
-            }
-            else
-            {
-                return aPolicy[id];
-            }
+            var policies = aPolicy.Where(p => p.ID == id);
+            return policies.ToArray()[0];
         }
 
         public Policy GetDataUsingDataContract(Policy policy)
